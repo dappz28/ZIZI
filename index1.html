@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk - Toko Tani Jaya</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* A slightly different gray */
+        }
+        /* Custom styles */
+        .btn-primary {
+            @apply bg-green-700 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-800 transition-colors duration-300;
+        }
+        .btn-secondary {
+            @apply bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors duration-300;
+        }
+        .category-btn {
+            @apply bg-white text-gray-700 py-2 px-5 rounded-full shadow-sm hover:bg-green-100 hover:text-green-800 border border-gray-200 transition-all duration-300;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="https://placehold.co/50x50/8bc34a/ffffff?text=TJ" alt="Logo Toko Tani Jaya" class="rounded-full">
+                <h1 class="text-2xl font-bold text-green-800">Nagara Tani Jaya</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative hidden md:block">
+                    <input type="search" placeholder="Cari di toko ini..." class="pl-4 pr-10 py-2 rounded-full border border-gray-300 focus:outline-none focus:border-green-500">
+                    <i class="fas fa-search absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                </div>
+                <a href="index.html" class="text-sm text-green-700 hover:underline hidden md:block">← ke TaniCare</a>
+                <a href="#" class="text-2xl text-gray-700">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Store Hero Section -->
+        <section class="bg-cover bg-center h-80" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('nagara\ tani.png');">
+            <div class="container mx-auto px-6 h-full flex flex-col justify-center items-center text-center text-white">
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-3">Kebutuhan Pertanian Terlengkap</h2>
+                <p class="text-lg max-w-2xl">Menyediakan pupuk, benih, pestisida, dan alat pertanian berkualitas untuk kesuksesan panen Anda.</p>
+            </div>
+        </section>
+
+        <!-- Product Catalog -->
+        <section class="py-16">
+            <div class="container mx-auto px-6">
+                <!-- Categories -->
+                <div class="mb-12 text-center">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Pilih Kategori Produk</h3>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <button class="category-btn">Semua</button>
+                        <button class="category-btn">Pupuk</button>
+                        <button class="category-btn">Benih</button>
+                        <button class="category-btn">Pestisida</button>
+                        <button class="category-btn">Alat Pertanian</button>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Product Card 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 flex flex-col">
+                        <img src="pupukurea.jpg" alt="Pupuk Urea" class="w-full h-48 object-cover">
+                        <div class="p-5 flex-grow flex flex-col">
+                            <h4 class="text-lg font-bold text-gray-800 mb-2">Pupuk Urea Petrokimia</h4>
+                            <p class="text-sm text-gray-600 mb-4 flex-grow">Meningkatkan pertumbuhan daun tanaman.</p>
+                            <p class="text-xl font-extrabold text-green-700 mb-4">Rp 180.000</p>
+                            <button class="btn-secondary w-full mt-auto"><i class="fas fa-cart-plus mr-2"></i>Beli Sekarang</button>
+                        </div>
+                    </div>
+                    <!-- Product Card 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 flex flex-col">
+                        <img src="pupuknpk.jpeg" alt="Pupuk NPK" class="w-full h-48 object-cover">
+                        <div class="p-5 flex-grow flex flex-col">
+                            <h4 class="text-lg font-bold text-gray-800 mb-2">Pupuk NPK Mutiara</h4>
+                            <p class="text-sm text-gray-600 mb-4 flex-grow">Pupuk seimbang untuk semua fase tanaman.</p>
+                            <p class="text-xl font-extrabold text-green-700 mb-4">Rp 350.000</p>
+                            <button class="btn-secondary w-full mt-auto"><i class="fas fa-cart-plus mr-2"></i>Beli Sekarang</button>
+                        </div>
+                    </div>
+                    <!-- Product Card 3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 flex flex-col">
+                        <img src="insek.jpeg" alt="Insektisida" class="w-full h-48 object-cover">
+                        <div class="p-5 flex-grow flex flex-col">
+                            <h4 class="text-lg font-bold text-gray-800 mb-2">Insektisida Regent 50 SC</h4>
+                            <p class="text-sm text-gray-600 mb-4 flex-grow">Efektif mengendalikan hama wereng.</p>
+                            <p class="text-xl font-extrabold text-green-700 mb-4">Rp 75.000</p>
+                            <button class="btn-secondary w-full mt-auto"><i class="fas fa-cart-plus mr-2"></i>Beli Sekarang</button>
+                        </div>
+                    </div>
+                    <!-- Product Card 4 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 flex flex-col">
+                        <img src="fungisida.jpg" alt="Fungisida" class="w-full h-48 object-cover">
+                        <div class="p-5 flex-grow flex flex-col">
+                            <h4 class="text-lg font-bold text-gray-800 mb-2">Fungisida Antracol 70 WP</h4>
+                            <p class="text-sm text-gray-600 mb-4 flex-grow">Melindungi tanaman dari serangan jamur.</p>
+                            <p class="text-xl font-extrabold text-green-700 mb-4">Rp 95.000</p>
+                            <button class="btn-secondary w-full mt-auto"><i class="fas fa-cart-plus mr-2"></i>Beli Sekarang</button>
+                        </div>
+                    </div>
+                    <!-- Product Card 5 -->
+                     <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 flex flex-col">
+                        <img src="cabe.jpeg" alt="Benih Cabai" class="w-full h-48 object-cover">
+                        <div class="p-5 flex-grow flex flex-col">
+                            <h4 class="text-lg font-bold text-gray-800 mb-2">Benih Cabai Rawit Dewata 43</h4>
+                            <p class="text-sm text-gray-600 mb-4 flex-grow">Potensi hasil tinggi, tahan virus.</p>
+                            <p class="text-xl font-extrabold text-green-700 mb-4">Rp 25.000</p>
+                            <button class="btn-secondary w-full mt-auto"><i class="fas fa-cart-plus mr-2"></i>Beli Sekarang</button>
+                        </div>
+                    </div>
+                    <!-- Product Card 6 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 flex flex-col">
+                        <img src="jagung.jpg" alt="Benih Jagung" class="w-full h-48 object-cover">
+                        <div class="p-5 flex-grow flex flex-col">
+                            <h4 class="text-lg font-bold text-gray-800 mb-2">Benih Jagung NK Perkasa</h4>
+                            <p class="text-sm text-gray-600 mb-4 flex-grow">Tongkol besar dan rendemen tinggi.</p>
+                            <p class="text-xl font-extrabold text-green-700 mb-4">Rp 110.000</p>
+                            <button class="btn-secondary w-full mt-auto"><i class="fas fa-cart-plus mr-2"></i>Beli Sekarang</button>
+                        </div>
+                    </div>
+                    <!-- Product Card 7 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 flex flex-col">
+                        <img src="Sprayer-Elektrik-Swan-Gse-16(LMGAAGRO.WEB.ID).jpg" alt="Alat Semprot" class="w-full h-48 object-cover">
+                        <div class="p-5 flex-grow flex flex-col">
+                            <h4 class="text-lg font-bold text-gray-800 mb-2">Sprayer Elektrik 16L</h4>
+                            <p class="text-sm text-gray-600 mb-4 flex-grow">Semprotan kuat dan baterai tahan lama.</p>
+                            <p class="text-xl font-extrabold text-green-700 mb-4">Rp 450.000</p>
+                            <button class="btn-secondary w-full mt-auto"><i class="fas fa-cart-plus mr-2"></i>Beli Sekarang</button>
+                        </div>
+                    </div>
+                    <!-- Product Card 8 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 flex flex-col">
+                        <img src="plastik.webp" alt="Plastik Mulsa" class="w-full h-48 object-cover">
+                        <div class="p-5 flex-grow flex flex-col">
+                            <h4 class="text-lg font-bold text-gray-800 mb-2">Plastik Mulsa Hitam Perak</h4>
+                            <p class="text-sm text-gray-600 mb-4 flex-grow">Menekan gulma dan menjaga kelembapan.</p>
+                            <p class="text-xl font-extrabold text-green-700 mb-4">Rp 550.000</p>
+                            <button class="btn-secondary w-full mt-auto"><i class="fas fa-cart-plus mr-2"></i>Beli Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-green-900 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Nagara Tani Jaya</h3>
+                    <p class="text-green-200 text-sm">Mitra resmi TaniCare dalam menyediakan kebutuhan pertanian berkualitas.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Lokasi & Jam Buka</h3>
+                    <p class="text-green-200 text-sm">Jl. Jend. Sudirman No. 123, Pekanbaru, Riau</p>
+                    <p class="text-green-200 text-sm mt-2">Senin - Sabtu: 08:00 - 17:00</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Hubungi Kami</h3>
+                    <div class="flex justify-center md:justify-start items-center gap-4 text-green-200 text-sm">
+                        <i class="fas fa-phone"></i><span>(0761) 123-456</span>
+                    </div>
+                    <div class="flex justify-center md:justify-start items-center gap-4 text-green-200 text-sm mt-2">
+                         <i class="fab fa-whatsapp"></i><span>+62 812-3456-7890</span>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-green-800 mt-8 pt-6 text-center text-sm text-green-300">
+                <p>&copy; 2025 Toko Tani Jaya | Didukung oleh TaniCare</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

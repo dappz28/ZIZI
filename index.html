@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaniCare - Aplikasi Serba Bisa untuk Petani</title>
+    <style>
+        /* Variabel warna */
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #8bc34a;
+            --accent-color: #ffa000;
+            --light-color: #e8f5e9;
+            --dark-color: #1b5e20;
+            --text-color: #333;
+            --white-color: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        /* Header and Navigation */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-color);
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: var(--white-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hutan.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white-color);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white-color);
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .btn:hover {
+            background-color: #ff8f00;
+            transform: scale(1.05);
+        }
+        
+        /* General Section Styles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 0;
+            background-color: var(--white-color);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        /* Market Prices Section */
+        .market-prices-section {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .price-table th, .price-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .price-table th {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+        .price-table tr:nth-child(even) {
+            background-color: #fff;
+        }
+        .price-table tr:hover {
+            background-color: #e9e9e9;
+        }
+
+        /* Weather Section */
+        .weather-section {
+            padding: 60px 0;
+            background-color: var(--white-color);
+        }
+        .weather-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .weather-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .weather-card h3 {
+            font-size: 20px;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+        .weather-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        .weather-icon {
+            font-size: 50px;
+        }
+        .weather-details .temp {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+        .weather-details p {
+            margin: 0;
+            color: var(--dark-color);
+        }
+        
+        /* Shop & Marketplace Section */
+        .shop-section, .marketplace-section {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        .marketplace-section {
+            background-color: var(--white-color);
+        }
+        
+        .search-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        #searchInput {
+            width: 60%;
+            max-width: 500px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 2px solid #ddd;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        #searchInput:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: var(--white-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-info h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .product-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .product-card .product-info .product-desc {
+            flex-grow: 1;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart, .contact-seller-btn {
+            background-color: var(--accent-color);
+            color: var(--white-color);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover, .contact-seller-btn:hover {
+            background-color: #ff8f00;
+        }
+
+        .contact-seller-btn {
+            background-color: var(--primary-color);
+        }
+        .contact-seller-btn:hover {
+            background-color: var(--dark-color);
+        }
+        
+        /* Mitra Toko Section */
+        .mitra-toko-section {
+            padding: 60px 0;
+            background-color: var(--white-color);
+        }
+        .toko-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .toko-card {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .toko-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--white-color);
+            flex-shrink: 0;
+        }
+        .toko-info h3 {
+            font-size: 24px;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+        .toko-info .location {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .toko-info .desc {
+            margin-bottom: 20px;
+        }
+
+        /* Mitra Section */
+        .mitra-section {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .mitra-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            max-width: 800px;
+            margin: 30px auto 0;
+        }
+        
+        .mitra-card {
+            background-color: #fff;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .mitra-card.premium {
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .mitra-card h3 {
+            font-size: 24px;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .mitra-card .price {
+            font-size: 40px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+         .mitra-card .price span {
+            font-size: 16px;
+            font-weight: normal;
+            color: #777;
+        }
+        
+        .mitra-card ul {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .mitra-card ul li {
+            margin-bottom: 15px;
+        }
+
+        .mitra-card.premium h3 {
+            color: var(--accent-color);
+        }
+
+        /* Consultation Section */
+        .consultation-section {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .consultation-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .consultation-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .consultation-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .consultation-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .consultation-content h3 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .expert-profiles {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .expert {
+            text-align: center;
+            width: 100px;
+        }
+
+        .expert img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 3px solid var(--secondary-color);
+            transition: transform 0.3s;
+        }
+
+        .expert a:hover img {
+            transform: scale(1.1);
+        }
+
+        .expert p {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Pojok Edukasi (Blog) Section */
+        .edukasi-section {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .blog-card {
+            background-color: var(--white-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.12);
+        }
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .blog-content {
+            padding: 25px;
+        }
+        .blog-content h3 {
+            font-size: 20px;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+        .blog-content p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .blog-content .btn {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 60px 0;
+            background-color: var(--white-color);
+        }
+        .testimonials-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .testimonial {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        .testimonial.active {
+            display: block;
+        }
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .testimonial-content::before {
+            content: '"';
+            font-size: 60px;
+            color: var(--secondary-color);
+            position: absolute;
+            left: -20px;
+            top: -20px;
+            opacity: 0.3;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        .author-info p {
+            color: var(--primary-color);
+            font-size: 14px;
+        }
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .control-btn {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .control-btn:hover {
+            background-color: var(--dark-color);
+        }
+
+        /* KOPMA Section */
+        .kopma-section {
+             padding: 60px 0;
+             background-color: var(--light-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white-color);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white-color);
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            nav {
+                width: 100%;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--dark-color);
+                padding: 10px 0;
+            }
+            nav ul.show {
+                display: flex;
+            }
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+            .toko-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white-color);
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://placehold.co/50x50/2e7d32/ffffff?text=TC" alt="Logo TaniCare">
+                <h1>Tani<span>Care</span></h1>
+            </div>
+             <nav>
+                <ul id="menu">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#features">Fitur</a></li>
+                    <li><a href="#market-prices">Harga Pasar</a></li>
+                    <li><a href="#weather">Cuaca</a></li>
+                    <li><a href="#shop">Belanja Saprotan</a></li>
+                    <li><a href="#marketplace">Jual Panen</a></li>
+                    <li><a href="#edukasi">Pojok Edukasi</a></li>
+                    <li><a href="#consultation">Konsultasi</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Solusi Terpadu untuk Petani Modern</h2>
+            <p>TaniCare membantu petani meningkatkan produktivitas dan kesejahteraan melalui teknologi digital yang mudah digunakan.</p>
+            <a href="#features" class="btn">Jelajahi Fitur</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Fitur Unggulan</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Harga Pasar</h3>
+                    <p>Pantau harga komoditas terkini di pasar terdekat untuk mendapatkan harga jual terbaik.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌤️</div>
+                    <h3>Info Cuaca</h3>
+                    <p>Dapatkan informasi cuaca terkini untuk membantu perencanaan aktivitas bertani Anda.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🌾</div>
+                    <h3>Konsultasi Ahli</h3>
+                    <p>Tanyakan permasalahan pertanian Anda kepada pakar pertanian kami yang siap membantu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Prices Section -->
+    <section class="market-prices-section" id="market-prices">
+        <div class="container">
+            <div class="section-title">
+                <h2>Harga Pasar Terkini</h2>
+            </div>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Komoditas</th>
+                        <th>Harga (Rp/kg)</th>
+                        <th>Perubahan</th>
+                        <th>Pasar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Beras Premium</td>
+                        <td>14.500</td>
+                        <td style="color: green;">+200</td>
+                        <td>Pasar Induk Pekanbaru</td>
+                    </tr>
+                    <tr>
+                        <td>Tandan Buah Segar (Sawit)</td>
+                        <td>2.850</td>
+                        <td style="color: red;">-50</td>
+                        <td>PTPN V</td>
+                    </tr>
+                    <tr>
+                        <td>Cabai Merah</td>
+                        <td>45.000</td>
+                        <td style="color: green;">+1.500</td>
+                        <td>Pasar Cik Puan</td>
+                    </tr>
+                    <tr>
+                        <td>Bawang Merah</td>
+                        <td>38.000</td>
+                        <td style="color: red;">-1.000</td>
+                        <td>Pasar Pagi Arengka</td>
+                    </tr>
+                    <tr>
+                        <td>Karet (Lump)</td>
+                        <td>11.200</td>
+                        <td style="color: green;">+300</td>
+                        <td>Pasar Petani Lokal</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Weather Section -->
+    <section class="weather-section" id="weather">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pantau Cuaca Terkini</h2>
+            </div>
+            <div class="weather-grid">
+                <div class="weather-card">
+                    <h3>Hari Ini (Pekanbaru)</h3>
+                    <div class="weather-info">
+                        <div class="weather-icon">☀️</div>
+                        <div class="weather-details">
+                            <p class="temp">32°C</p>
+                            <p>Cerah Berawan</p>
+                        </div>
+                    </div>
+                    <p>Kelembapan: 65%</p>
+                </div>
+                <div class="weather-card">
+                    <h3>Besok</h3>
+                    <div class="weather-info">
+                        <div class="weather-icon">🌦️</div>
+                        <div class="weather-details">
+                             <p class="temp">30°C</p>
+                             <p>Hujan Ringan</p>
+                        </div>
+                    </div>
+                     <p>Kemungkinan Hujan: 40%</p>
+                </div>
+                <div class="weather-card">
+                    <h3>Lusa</h3>
+                    <div class="weather-info">
+                         <div class="weather-icon">☁️</div>
+                         <div class="weather-details">
+                            <p class="temp">31°C</p>
+                            <p>Berawan</p>
+                         </div>
+                    </div>
+                    <p>Kelembapan: 70%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section class="shop-section" id="shop">
+        <div class="container">
+            <div class="section-title">
+                <h2>Belanja Sarana Produksi Tani</h2>
+            </div>
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Cari produk (contoh: pupuk, benih)...">
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Product cards will be placed here -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="pupuk.jpeg" alt="Pupuk NPK">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Pupuk NPK Phonska</h3>
+                        <p class="product-desc">Pupuk majemuk untuk hasil panen melimpah.</p>
+                        <div class="product-price">Rp 125.000/50kg</div>
+                        <button class="add-to-cart">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="benih padi.jpeg" alt="Benih Padi">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Benih Padi Unggul</h3>
+                        <p class="product-desc">Varietas tahan hama, hasil panen tinggi.</p>
+                        <div class="product-price">Rp 85.000/5kg</div>
+                        <button class="add-to-cart">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="pesnab-min-300x300.jpg" alt="Pestisida Organik">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Pestisida Organik</h3>
+                        <p class="product-desc">Ramah lingkungan dan aman untuk tanaman.</p>
+                        <div class="product-price">Rp 65.000/liter</div>
+                       <button class="add-to-cart">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Sprayer-Elektrik-Swan-Gse-16(LMGAAGRO.WEB.ID).jpg" alt="Alat Semprot">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Alat Semprot Elektrik</h3>
+                        <p class="product-desc">Alat semprot modern dan efisien.</p>
+                        <div class="product-price">Rp 350.000</div>
+                        <button class="add-to-cart">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+            </div>
+            <div id="no-results" style="display: none; text-align: center; margin-top: 30px; font-size: 18px; color: #555;">
+                <p>Produk tidak ditemukan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Section -->
+    <section class="marketplace-section" id="marketplace">
+        <div class="container">
+            <div class="section-title">
+                <h2>Beli Bibit Panen</h2>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="bibit sawit.png" alt="Panen Sawit">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Bibit Kelapa Sawit</h3>
+                        <p class="product-desc">Kualitas super, dari kebun rakyat di Pelalawan.</p>
+                        <div class="product-price">Rp 2.850/kg</div>
+                        <a href="https://api.whatsapp.com/send/?phone=6282171815956&text=Halo%2C+Dr.+Zizi" class="contact-seller-btn">Hubungi Penjual</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="padi.png" alt="Panen Beras">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Beras Solok Asli</h3>
+                        <p class="product-desc">Baru panen, tanpa pemutih. Langsung dari petani di Siak.</p>
+                        <div class="product-price">Rp 13.500/kg</div>
+                        <a href="https://api.whatsapp.com/send/?phone=6282171815956&text=Halo%2C+Dr.+Zizi" class="contact-seller-btn">Hubungi Penjual</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="sayur.png" alt="Panen Sayur">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Sayuran Hidroponik</h3>
+                        <p class="product-desc">Selada, kangkung, bayam segar dari kebun Pekanbaru.</p>
+                        <div class="product-price">Mulai Rp 5.000/ikat</div>
+                        <a href="https://api.whatsapp.com/send/?phone=6282171815956&text=Halo%2C+Dr.+Zizi" class="contact-seller-btn">Hubungi Penjual</a>
+                    </div>
+                </div>
+                 <div class="product-card">
+                    <div class="product-image">
+                        <img src="nanas.png" alt="Panen Nanas">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Nanas Madu Kampar</h3>
+                        <p class="product-desc">Rasa manis dan segar, kualitas ekspor.</p>
+                        <div class="product-price">Rp 10.000/buah</div>
+                        <a href="https://api.whatsapp.com/send/?phone=6282171815956&text=Halo%2C+Dr.+Zizi" class="contact-seller-btn">Hubungi Penjual</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Edukasi Section -->
+    <section class="edukasi-section" id="edukasi">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pojok Edukasi Tani</h2>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <img src="tips pupuk sawit.png" alt="Pupuk Sawit">
+                    <div class="blog-content">
+                        <h3>5 Cara Pemupukan Sawit yang Efektif di Lahan Gambut</h3>
+                        <p>Pelajari teknik pemupukan yang tepat untuk meningkatkan produksi TBS di lahan gambut Riau...</p>
+                        <a href="https://r.search.yahoo.com/_ylt=AwrKAEnW91hoBAIAGM_LQwx.;_ylu=Y29sbwNzZzMEcG9zAzEEdnRpZAMEc2VjA3Ny/RV=2/RE=1751870678/RO=10/RU=https%3a%2f%2filmubudidaya.com%2fcara-memupuk-sawit-di-lahan-gambut/RK=2/RS=Edh49uI5Ybai07MI_f7UlWzoSKU-" class="btn">Baca Selengkapnya</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="hama.png" alt="Hama Tanaman">
+                    <div class="blog-content">
+                        <h3>Mengenal Hama Ulat Api dan Cara Pengendaliannya</h3>
+                        <p>Jangan biarkan hama ulat api merusak kebun Anda. Kenali gejala dan cara mengatasinya...</p>
+                        <a href="https://r.search.yahoo.com/_ylt=AwrPrCI5.Fho.QEA4ITLQwx.;_ylu=Y29sbwNzZzMEcG9zAzEEdnRpZAMEc2VjA3Ny/RV=2/RE=1751870778/RO=10/RU=https%3a%2f%2fditjenbun.pertanian.go.id%2fmengenal-ulat-api-pada-kelapa-sawit-dan-pengendaliannya%2f/RK=2/RS=7rTvBo_AeAadczOZksLfffCsAls-" class="btn">Baca Selengkapnya</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="cabai.png" alt="Pasca Panen">
+                    <div class="blog-content">
+                        <h3>Teknik Pasca Panen untuk Menjaga Kualitas Cabai</h3>
+                        <p>Harga cabai sedang bagus, pastikan kualitasnya terjaga hingga ke tangan konsumen...</p>
+                        <a href="https://r.search.yahoo.com/_ylt=Awr1Salj.FhoNwIAGFLLQwx.;_ylu=Y29sbwNzZzMEcG9zAzEEdnRpZAMEc2VjA3Ny/RV=2/RE=1751870820/RO=10/RU=https%3a%2f%2fcybex.id%2fartikel%2f88268%2fcara-panen-dan-penanganan-pascapanen-cabai-merah-%2f/RK=2/RS=5YNqUQ1xaGN0m_P4ZzPgx0xDRXY-" class="btn">Baca Selengkapnya</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mitra Toko & KOPMA Section -->
+    <section class="mitra-toko-section" id="mitra-toko">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mitra Unggulan Kami</h2>
+            </div>
+            <div class="toko-container" style="display:flex; flex-direction:column; gap: 40px;">
+                <div class="toko-card">
+                    <img src="Gemini_Generated_Image_tcyxjbtcyxjbtcyx.png" alt="Logo Toko Tani Jaya" class="toko-logo">
+                    <div class="toko-info">
+                        <h3>Nagara Tani Jaya</h3>
+                        <p class="location">Jl. Sudirman, Pekanbaru</p>
+                        <p class="desc">Menyediakan berbagai macam pupuk, benih unggul, dan peralatan pertanian modern dengan harga bersaing.</p>
+                        <a href="index1.html" class="btn">Kunjungi Toko</a>
+                    </div>
+                </div>
+                 <div class="toko-card" id="kerjasama-kopma">
+                    <img src="LOGOKOPMA.png"Logo KOPMA UNRI" class="toko-logo">
+                    <div class="toko-info">
+                        <h3>Kolaborasi dengan KOPMA UNRI</h3>
+                        <p class="location">Universitas Riau</p>
+                        <p class="desc">TaniCare bangga bekerjasama dengan Koperasi Mahasiswa UNRI dalam program pendampingan petani dan pengembangan agropreneur muda.</p>
+                        <a href="https://kopmaunri.github.io/kopma_unrii_/?fbclid=PAQ0xDSwLF25RleHRuA2FlbQIxMQABp77UtSSD4jL9Trw-XDc0c9NDeOAFnRwZkH0eaz50BM1TqTHqDFKvzjquEiGC_aem_5CDs1HXSDjJJm8SPt1zi7A" class="btn">Lihat Program</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Mitra Section -->
+    <section class="mitra-section" id="mitra">
+        <div class="container">
+            <div class="section-title">
+                <h2>Jadi Mitra TaniCare</h2>
+            </div>
+            <div class="mitra-grid">
+                <!-- Free Plan -->
+                <div class="mitra-card">
+                    <h3>Petani</h3>
+                    <p class="price">Gratis</p>
+                    <p style="color: #777; margin-bottom: 20px;">Untuk memulai dan berkembang.</p>
+                    <ul>
+                        <li>✔️ Info Cuaca Dasar</li>
+                        <li>✔️ Harga Pasar Umum</li>
+                        <li>✔️ Akses Belanja Online</li>
+                        <li>✔️ Konsultasi via Komunitas</li>
+                    </ul>
+                    <button class="btn" style="background-color: #ccc; cursor: default;">Pilihan Anda</button>
+                </div>
+                <!-- Premium Plan -->
+                <div class="mitra-card premium">
+                    <h3>Mitra Premium</h3>
+                    <p class="price">Rp 50rb<span>/bulan</span></p>
+                    <p style="color: #777; margin-bottom: 20px;">Untuk pertumbuhan bisnis yang eksponensial.</p>
+                    <ul>
+                        <li>✔️ Semua fitur Gratis, plus:</li>
+                        <li>✔️ Analisis Lahan & Rekomendasi</li>
+                        <li>✔️ Prioritas Konsultasi Ahli</li>
+                        <li>✔️ Tampilkan Hasil Panen di Marketplace</li>
+                        <li>✔️ Diskon Eksklusif Produk Tani</li>
+                        <li>✔️ Akses Koperasi Digital</li>
+                    </ul>
+                    <a href="https://api.whatsapp.com/send/?phone=6282171815956&text=Halo%2C+Dr.+Zizi" class="btn">Daftar Jadi Mitra</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Consultation Section -->
+    <section class="consultation-section" id="consultation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Konsultasi dengan Ahli</h2>
+            </div>
+            <div class="consultation-container">
+                <div class="consultation-image">
+                    <img src="https://placehold.co/600x450/e8f5e9/2e7d32?text=Konsultasi+dengan+Pakar" alt="Konsultasi Pertanian">
+                </div>
+                <div class="consultation-content">
+                    <h3>Tanyakan pada Pakar Kami</h3>
+                    <p>Anda menghadapi masalah pertanian? Tim ahli kami siap membantu Anda dengan solusi tepat untuk berbagai kendala. Pilih konsultan kami di bawah ini untuk memulai:</p>
+                    <div class="expert-profiles">
+                        <div class="expert">
+                            <a href="https://api.whatsapp.com/send/?phone=6281270403788&text=Halo%2C+Prof.+Dafa" target="_blank" style="color: black; text-decoration: none;">
+                                <img src="dafa.jpg" alt="Prof. Dafa">
+                                <p>Prof. Dafa</p>
+                            </a>
+                        </div>
+                        <div class="expert">
+                            <a href="https://api.whatsapp.com/send/?phone=6282390679519&text=Halo%2C+H.+Rafli" target="_blank" style="color: black; text-decoration: none;">
+                                <img src="rafli.jpg" alt="H. Rafli">
+                                <p>H. Rafli</p>
+                            </a>
+                        </div>
+                        <div class="expert">
+                            <a href="https://api.whatsapp.com/send/?phone=6282171815956&text=Halo%2C+Dr.+Zizi" target="_blank" style="color: black; text-decoration: none;">
+                                <img src="zizi.jpg" alt="Dr. Zizi">
+                                <p>Dr. Zizi</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Testimoni Petani</h2>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial active">
+                    <div class="testimonial-content">
+                        <p>TaniCare benar-benar mengubah cara saya bertani. Dengan informasi cuaca yang akurat, pendapatan saya meningkat 30%!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://placehold.co/50x50/334155/ffffff?text=PL" alt="Pak Lana">
+                        <div class="author-info">
+                            <h4>Pak Lana</h4>
+                            <p>Petani Padi, Pekanbaru</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>Fitur konsultasi sangat membantu saya mengatasi serangan hama. Berkat TaniCare, saya bisa menyelamatkan panen cabai saya.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://placehold.co/50x50/334155/ffffff?text=IF" alt="Ibu Fattia">
+                        <div class="author-info">
+                            <h4>Ibu Fattia</h4>
+                            <p>Petani Sawit, Riau</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>Koperasi Digital memberikan saya akses ke permodalan yang mudah. Usaha tani jagung saya sekarang jauh lebih berkembang.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://placehold.co/50x50/334155/ffffff?text=PU" alt="Pak Uma">
+                        <div class="author-info">
+                            <h4>Ibu Annisa</h4>
+                            <p>Petani Jagung, Siak</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="control-btn prev">◄</button>
+                <button class="control-btn next">►</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Tentang TaniCare</h3>
+                    <p>TaniCare adalah aplikasi pertanian terpadu yang dikembangkan untuk meningkatkan produktivitas dan kesejahteraan petani Indonesia.</p>
+                    <div class="social-links">
+                        <a href="#">f</a>
+                        <a href="#">t</a>
+                        <a href="#">in</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tautan Cepat</h3>
+                    <ul>
+                       <li><a href="#home">Beranda</a></li>
+                        <li><a href="#features">Fitur</a></li>
+                        <li><a href="#shop">Belanja</a></li>
+                        <li><a href="#mitra">Jadi Mitra</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Hubungi Kami</h3>
+                    <p>Email: info@tanicare.id</p>
+                    <p>Telepon: +62 812 7040 3788</p>
+                    <p>Alamat: Jl.Bina Widya, Pekanbaru</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Berlangganan</h3>
+                    <p>Dapatkan tips pertanian terbaru dari TaniCare.</p>
+                    <form>
+                        <input type="email" placeholder="Email Anda" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: none;">
+                        <button type="submit" class="btn" style="width: 100%;">Kirim</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lancang Kuning😎. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('#menu').classList.toggle('show');
+        });
+        
+        // Product Search Functionality
+        function searchProducts() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toUpperCase();
+            const grid = document.getElementById('productsGrid');
+            const cards = grid.getElementsByClassName('product-card');
+            const noResults = document.getElementById('no-results');
+            let found = false;
+
+            for (let i = 0; i < cards.length; i++) {
+                const productName = cards[i].querySelector('.product-name');
+                if (productName) {
+                    const txtValue = productName.textContent || productName.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        cards[i].style.display = "";
+                        found = true;
+                    } else {
+                        cards[i].style.display = "none";
+                    }
+                }
+            }
+            
+            noResults.style.display = found ? "none" : "block";
+        }
+        
+        // Testimonial Slider
+        const testimonials = document.querySelectorAll('.testimonial');
+        let currentTestimonial = 0;
+        
+        function showNextTestimonial() {
+            testimonials[currentTestimonial].classList.remove('active');
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            testimonials[currentTestimonial].classList.add('active');
+        }
+
+        document.querySelector('.next').addEventListener('click', showNextTestimonial);
+        
+        document.querySelector('.prev').addEventListener('click', function() {
+            testimonials[currentTestimonial].classList.remove('active');
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            testimonials[currentTestimonial].classList.add('active');
+        });
+        
+        // Auto rotate testimonials
+        setInterval(showNextTestimonial, 5000);
+    </script>
+</body>
+</html>
